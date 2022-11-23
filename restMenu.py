@@ -1,3 +1,6 @@
+from os import _exit
+from os import system
+
 def draw_line():
     print('===' * 30)
 
@@ -54,10 +57,9 @@ class Rest:
             elif order == 'yogurt' or order == 'salad' or order == 'bread':
                 self.price += 2
             else:
-                draw_line()
                 print('==> !!! [Invalid Input in Orders] !!!')
-                self.orders.clear()
-                return
+                _exit(0)
+
         print(f"==> $$$ [Calculated price: ${self.price}] $$$")
     
     def payment(self):
@@ -76,6 +78,8 @@ def main():
         obj = Rest()
         while True:
             try:
+                system('clear')
+
                 obj.get_diet()
                 obj.get_order()
 
@@ -88,6 +92,7 @@ def main():
                     break
                 else:
                     print("==> !!! [Invalid Input] !!!")
+                    continue
             
             except:
                 draw_line()
